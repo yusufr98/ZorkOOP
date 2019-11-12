@@ -92,6 +92,7 @@ public class Main {
                     if(current.getRow() == 3){
                         System.out.println("Invalid direction");
                     }
+
                     else{
                         if((rooms[current.getRow()+1][current.getCol()]) == null){
                             System.out.println("Invalid direction");

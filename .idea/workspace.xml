@@ -4,9 +4,7 @@
     <list default="true" id="772e425f-d27f-47f0-b020-0efc739c3f81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ZorkOOP/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ZorkOOP/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ZorkOOP/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ZorkOOP/Room.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +69,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573569413032</updated>
-      <workItem from="1573569418062" duration="10490000" />
+      <workItem from="1573569418062" duration="12923000" />
     </task>
     <servers />
   </component>
