@@ -7,20 +7,20 @@ public class Main {
     public static void main(String[] args) {
         Random r = new Random();
         Scanner k = new Scanner(System.in);
-        Room first = new Room(r.nextInt(4), r.nextInt(4), 1);
+        Room first = new Room(r.nextInt(4), r.nextInt(4), 1); // first room created with the coordinates bound
         rooms[first.getRow()][first.getCol()] = first;
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {  // we know we have ten rooms
             boolean repeat = true;
             int c, ro;
             do {
                 c = r.nextInt(4);
                 ro = r.nextInt(4);
-                if (rooms[ro][c] != null) {
+                if (rooms[ro][c] != null) { // protects from generating a room outside of the MdArrayList
                     continue;
                 }
                 if (ro == 3) {
                     if (c == 0) {
-                        if (rooms[ro - 1][c] != null || rooms[ro][c + 1] != null) {
+                        if (rooms[ro - 1][c] != null || rooms[ro][c + 1] != null) { // if room ro(3)co(0) - ro -1, co +1 = null, boolean is false
                             repeat = false;
                         }
                     } else if (c == 3) {
@@ -62,16 +62,26 @@ public class Main {
         System.out.println("Welcome to Zork! Type QUIT at any time to quit the game.");
 
         boolean end = true;
-        Room current = first;
-        while(end){//moving through rooms, it ends if quit is entered
+        Room current = first; // the room you are currently in
+        while(end){ //moving through rooms, it ends if quit is entered
             String d;
             boolean repeat = true;
             System.out.println("You are in Room " + current.getIndex() +"(" + current.getRow() + ", " + current.getCol() + ")");
+            for(Room[]array : rooms){
+                for(Room room : array ){
+                    if (room == null){
+                        System.out.print("empty\t" );
+                    }else {
+                        System.out.print("Room" + room.getIndex() + "\t");
+                    }
+                }
+                System.out.println();
+            }
             do {//choose direction, it repeats if invalid direction was chosen
                 System.out.println("Which direction would you like to go in?");
                 d = k.next();
                 if (d.equalsIgnoreCase("n")) {
-                    if(current.getRow() == 0){
+                    if(current.getRow() == 0){ // if your row is at zero it is impossible to go farther south // therefore invalid direction
                         System.out.println("Invalid direction");
                     }
                     else{
