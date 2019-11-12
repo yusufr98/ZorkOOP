@@ -7,13 +7,24 @@ public class Room {
    private int col;
    private int index;
 
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    private String item;
+
     public Room() {
     }
 
-    public Room(int row, int col, int index) {
+    public Room(int row, int col, int index, String item) {
         this.col = col;
         this.row = row;
         this.index = index;
+        this.item = item;
     }
 
     public int getIndex() {

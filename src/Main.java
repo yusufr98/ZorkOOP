@@ -1,13 +1,17 @@
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static Room[][] rooms = new Room[4][4];
     public static void main(String[] args) {
+        ArrayList<String> items = new ArrayList<>();
+        Collections.addAll(items,"skeleton", "bag of blood", "sword", "witch", "portal to the underworld", "dead rat", "vat of human feces", "creepy teddy bear", "clone of yourself", "Popeye's Chicken Sandwich");
         Random r = new Random();
         Scanner k = new Scanner(System.in);
-        Room first = new Room(r.nextInt(4), r.nextInt(4), 1); // first room created with the coordinates bound
+
+        int index = r.nextInt(items.size());
+        Room first = new Room(r.nextInt(4), r.nextInt(4), 1,items.get(index));
+        items.remove(index);
+
         rooms[first.getRow()][first.getCol()] = first;
         for (int i = 0; i < 9; i++) {  // we know we have ten rooms
             boolean repeat = true;
@@ -54,7 +58,10 @@ public class Main {
                     repeat = false;
                 }
             } while (repeat);
-            rooms[ro][c] = new Room(ro, c, i+2);
+            boolean bool = true;
+            int x = r.nextInt(items.size());
+            rooms[ro][c] = new Room(ro, c, i+2, items.get(x));
+            items.remove(x);
         }
 
         System.out.println("This is a directional adventure game. The goal is to find the secret room. " +
@@ -77,6 +84,7 @@ public class Main {
                 }
                 System.out.println();
             }
+
             do {//choose direction, it repeats if invalid direction was chosen
                 System.out.println("Which direction would you like to go in?");
                 d = k.next();
@@ -89,8 +97,7 @@ public class Main {
                             System.out.println("Invalid direction");
                         }
                         else{
-                            Room temp = new Room(current.getRow()-1, current.getCol(), rooms[current.getRow()-1][current.getCol()].getIndex());
-                            current = temp;
+                            current = new Room(current.getRow()-1, current.getCol(), rooms[current.getRow()-1][current.getCol()].getIndex(), rooms[current.getRow()-1][current.getCol()].getItem());
                             repeat = false;
                         }
                     }
@@ -103,8 +110,7 @@ public class Main {
                             System.out.println("Invalid direction");
                         }
                         else{
-                            Room temp = new Room(current.getRow()+1, current.getCol(), rooms[current.getRow()+1][current.getCol()].getIndex());
-                            current = temp;
+                            current = new Room(current.getRow()+1, current.getCol(), rooms[current.getRow()+1][current.getCol()].getIndex(), rooms[current.getRow()+1][current.getCol()].getItem());
                             repeat = false;
                         }
                     }
@@ -117,8 +123,7 @@ public class Main {
                             System.out.println("Invalid direction");
                         }
                         else{
-                            Room temp = new Room(current.getRow(), current.getCol()-1, rooms[current.getRow()][current.getCol()-1].getIndex());
-                            current = temp;
+                            current = new Room(current.getRow(), current.getCol()-1, rooms[current.getRow()][current.getCol()-1].getIndex(), rooms[current.getRow()][current.getCol()-1].getItem());
                             repeat = false;
                         }
                     }
@@ -131,13 +136,13 @@ public class Main {
                             System.out.println("Invalid direction");
                         }
                         else{
-                            Room temp = new Room(current.getRow(), current.getCol()+1, rooms[current.getRow()][current.getCol()+1].getIndex());
-                            current = temp;
+                            current = new Room(current.getRow(), current.getCol()+1, rooms[current.getRow()][current.getCol()+1].getIndex(), rooms[current.getRow()][current.getCol()+1].getItem());
                             repeat = false;
                         }
                     }
                 } else if (d.equalsIgnoreCase("quit")) {
                     end = false;
+                    repeat = false;
                 }
             } while (repeat);
         }
